@@ -1,4 +1,5 @@
 import os
+from time import sleep
 li = [
 
     'У вас плохое настроение?',
@@ -35,26 +36,26 @@ temp = 0
 while i < len(li):
     line = li[i]
     os.system('clear')
-    print ('Опросник депрессии Бернса\n')
+    print ('Опросник депрессии Бернса.\n')
     print('Варианты ответов:')
-    print("0 - Совсем нет\n1 - Немного\n2 - Умеренно\n3 - Сильно\n4 - Крайне")
+    print("0 - совсем нет\n1 - немного\n2 - умеренно\n3 - сильно\n4 - крайне")
     print('\n\"p\" - вернуться назад')
     print('\"q\" - выйти\n')
 
-    print('---------------------------\n')
+    print(' - - - - - - - - - - - - - -\n')
 
     if i < 11:
-        print('Блок "Мысли и чувства"')
+        print('Блок "Мысли и чувства".')
     elif i < 18:
-        print('Блок "Деятельность и личные отношения"')
+        print('Блок "Деятельность и личные отношения".')
     elif i < 23:
-        print('Блок "Физические симптомы"')
+        print('Блок "Физические симптомы".')
     else:
-        print('Блок "Суицидальные побуждения"')
+        print('Блок "Суицидальные побуждения".')
 
 
     try:
-        print(f"\n{i+1}: {line}")
+        print(f"\n{i+1}/{len(li)}: {line}")
         temp = input("Ваш ответ: ")
         if temp == 'q':
             break
@@ -64,15 +65,16 @@ while i < len(li):
         temp = int(temp)
     except:
         print('Введите число!')
+        sleep(1)
         continue
     
     if (temp < 0) or (temp > 4):
         print('Введите число в нужном диапазоне!')
+        sleep(1)
         continue
     sum += temp
 
-    print()
     i+=1
 
-print(f'\nСумма: {sum}')
+print(f'\nСумма: {sum}.')
 print()
